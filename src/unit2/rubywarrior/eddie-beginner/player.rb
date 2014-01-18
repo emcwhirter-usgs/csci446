@@ -5,11 +5,12 @@ class Player
     sludge_hp = 12
     heal = 0.10
 
-    # If I'm missing 2 times the health I can heal in 1 turn.
-    if warrior.health < (1-2*heal)*max_hp
-        warrior.rest!
-    elsif warrior.feel.empty?
-        warrior.walk!
+    if warrior.feel.empty?
+        if warrior.health < max_hp
+            warrior.rest!
+        else
+            warrior.walk!
+        end
     else
         warrior.attack!
     end
