@@ -19,7 +19,11 @@ class Player
         warrior.walk!
       end
     else # Space I want to move to is occupied
-      warrior.attack!
+      if warrior.feel.captive?
+        warrior.rescue!
+      else
+        warrior.attack!
+      end
     end
 
     @health = warrior.health
