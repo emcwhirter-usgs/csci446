@@ -26,19 +26,19 @@ class Player
   end
 
   def under_attack?(warrior)
-        if warrior.health < @health
-            result = true
-        else
-            result = false
-        end
+      if warrior.health < @health
+        result = true
+      else
+        result = false
+      end
   end
 
   def full_hp?(warrior)
-      if warrior.health >= @max_hp
-          result = true
-      else
-          result = false
-      end
+    if warrior.health >= @max_hp
+      result = true
+    else
+      result = false
+    end
   end
 
 end
