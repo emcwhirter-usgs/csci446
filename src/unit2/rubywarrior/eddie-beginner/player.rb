@@ -18,6 +18,10 @@ class Player
       direction = :backward
       space_clear = false
       @last_move = :backward
+    elsif !half_hp?(warrior) and under_attack?(warrior)
+      direction = :backward
+      space_clear = true
+      @last_move = :backward
     elsif warrior.feel.empty?
       direction = :forward
       space_clear = true
@@ -27,7 +31,6 @@ class Player
       space_clear = false
       @last_move = :forward
     end
-    #space_clear = warrior.feel.empty?
 
     if space_clear # Space I want to move to is empty
       if !full_hp?(warrior) and !under_attack?(warrior) # I'm hurt & not under attack
@@ -56,6 +59,14 @@ class Player
 
   def full_hp?(warrior)
     if warrior.health >= @max_hp
+      result = true
+    else
+      result = false
+    end
+  end
+
+  def half_hp?(warrior)
+    if warrior.health >= 0.5*@max_hp
       result = true
     else
       result = false
