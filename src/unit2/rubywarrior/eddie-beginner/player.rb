@@ -10,27 +10,37 @@ class Player
     #thick_sludge_max_hp = 20
     #archer_max_hp = 7
 
-    if warrior.feel(:backward).empty? and @last_move != :forward
+    #if !half_hp?(warrior) and under_attack?(warrior)
+    if !half_hp?(warrior)
+      if @last_move == :forward
+        if !warrior.feel.wall?
+          direction = :forward
+        end
+      else # Last move was backward
+        if !warrior.feel.wall?
+          direction = :forward
+        end
+      end
+      space_clear = true
+
+    elsif warrior.feel(:backward).empty? and @last_move != :forward
       direction = :backward
       space_clear = true
-      @last_move = :backward
     elsif warrior.feel(:backward).captive?
       direction = :backward
       space_clear = false
-      @last_move = :backward
-    elsif !half_hp?(warrior) and under_attack?(warrior)
+    elsif warrior.feel(:backward).enemy?
       direction = :backward
-      space_clear = true
-      @last_move = :backward
+      space_clear = false
+
     elsif warrior.feel.empty?
       direction = :forward
       space_clear = true
-      @last_move = :forward
-    else
-      direction = :forward
+    elsif warrior.feel.wall?
+      direction = :backward
       space_clear = false
-      @last_move = :forward
     end
+    @last_move = direction
 
     if space_clear # Space I want to move to is empty
       if !full_hp?(warrior) and !under_attack?(warrior) # I'm hurt & not under attack
