@@ -1,12 +1,18 @@
+require 'warriorstats'
+
 class Player
+
   def play_turn(warrior)
     # add your code here
-    max_hp = 20
-    sludge_hp = 12
-    heal = 0.10
+    sludge_max_hp = 12
+    thick_sludge_max_hp = 20
+    archer_max_hp = 7
+
+    me = WarriorStats.new
+    me.health_begin warrior.health
 
     if warrior.feel.empty?
-        if warrior.health < max_hp
+        if not me.full_hp and not me.under_attack
             warrior.rest!
         else
             warrior.walk!
@@ -14,5 +20,9 @@ class Player
     else
         warrior.attack!
     end
+
+    me.health_end warrior.health
+
   end
+
 end
