@@ -11,18 +11,26 @@ class Player
     #archer_max_hp = 7
 
     #if !half_hp?(warrior) and under_attack?(warrior)
+    # defaults
+    direction = :forward
+    need_to_shoot = false
+
+    # I'm hurt bad, let's run away so I have time to rest.
     if !half_hp?(warrior)
+      # If I was running away forward, but haven't hit a wall, keep running
       if @last_move == :forward
         if !warrior.feel.wall?
           direction = :forward
         end
+      # If I was running away backward, but haven't hit a wall, keep running
       else # Last move was backward
-        if !warrior.feel.wall?
+        if !warrior.feel(:backward).wall?
           direction = :forward
         end
       end
       space_clear = true
 
+    # I don't want to get stuck in a loop, but make sure to check back of room.
     elsif warrior.feel(:backward).empty? and @last_move != :forward
       direction = :backward
       space_clear = true
@@ -33,9 +41,17 @@ class Player
       direction = :backward
       space_clear = false
 
+    # Continue searching forward if I'm healthy and nothing is behind me.
     elsif warrior.feel.empty?
+      # The space directly in front of me is empty, let's look a little further.
+      warrior.look.each { |space|
+        if space.enemy?
+          need_to_shoot = true
+        end
+      }
       direction = :forward
       space_clear = true
+    # No where left to go forward, so go backwards.
     elsif warrior.feel.wall?
       direction = :backward
       space_clear = false
@@ -46,7 +62,11 @@ class Player
       if !full_hp?(warrior) and !under_attack?(warrior) # I'm hurt & not under attack
           warrior.rest!
       else # I'm full health
-        warrior.walk! (direction)
+        if need_to_shoot
+          warrior.shoot!
+        else
+          warrior.walk! (direction)
+        end
       end
     else # Space I want to move to is occupied
       if warrior.feel(direction).captive?
