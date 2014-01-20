@@ -14,6 +14,13 @@ class Player
     # defaults
     direction = :forward
     need_to_shoot = false
+    need_to_shoot_back = false
+
+    warrior.look(:backward).each { |space|
+      if space.enemy?
+        need_to_shoot_back = true
+      end
+    }
 
     # I'm hurt bad, let's run away so I have time to rest.
     if !half_hp?(warrior)
@@ -58,7 +65,9 @@ class Player
     end
     @last_move = direction
 
-    if space_clear # Space I want to move to is empty
+    if need_to_shoot_back
+      warrior.shoot!(:backward)
+    elsif space_clear # Space I want to move to is empty
       if !full_hp?(warrior) and !under_attack?(warrior) # I'm hurt & not under attack
           warrior.rest!
       else # I'm full health
