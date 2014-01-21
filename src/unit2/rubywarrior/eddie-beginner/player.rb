@@ -1,4 +1,11 @@
-require 'warriorstats'
+# Epic score 511
+#    instance var - line 95
+#    class var
+#    constants - line 14
+#    array - line 26
+#    hash
+#    functions - line 98
+#    comments - Everywhere that makes sense
 
 class Player
 
