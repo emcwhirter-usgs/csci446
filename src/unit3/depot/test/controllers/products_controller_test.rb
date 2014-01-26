@@ -7,6 +7,7 @@
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 require 'test_helper'
+
 class ProductsControllerTest < ActionController::TestCase
   setup do
     @product = products(:one)
