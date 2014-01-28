@@ -1,10 +1,24 @@
 Edward A McWhirter Jr. (Eddie McWhirter)
 Drop zone for assignments and work associated with CSCI 446 OL, Web Applications II
 
-= Unit 1 =
+ Unit 1
+========
 - Open src/first_project/SassyPage.html in a browser
 - Style changes were made in src/first_project/sass/screen.scss
 - I don't think the custom font is working
 
-= Unit 2 =
--
+ Unit 2
+========
+- Follow instructions Ruby Warrior: https://github.com/ryanb/ruby-warrior
+- Pull and run my /src/unit2 to see how my warrior did
+- Play a web version of the Ruby Warrior game: https://www.bloc.io/ruby-warrior/#/
+
+ Unit 3
+========
+- Not much to look at here, just running through demos from the book:
+    Agile Web Development with Rails Fourth Edition
+- You can get a fresh copy of the code from their website:
+    http://pragprog.com/titles/rails4/source_code/
+
+ Unit 4
+========
