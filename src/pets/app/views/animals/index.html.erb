@@ -1,33 +1,49 @@
-<h1>Listing animals</h1>
+<div class="animals">
+  <h1>Wonderful Animals to Foster</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Age</th>
-      <th>Type of animal</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @animals.each do |animal| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= animal.name %></td>
-        <td><%= animal.age %></td>
-        <td><%= animal.type_of_animal %></td>
-        <td><%= animal.description %></td>
-        <td><%= link_to 'Show', animal %></td>
-        <td><%= link_to 'Edit', edit_animal_path(animal) %></td>
-        <td><%= link_to 'Destroy', animal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Type of animal</th>
+        <th>Description</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @animals.each do |animal| %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+
+          <td class="name">
+            <%= animal.name %>
+          </td>
+
+          <td class="age">
+            <%= animal.age %>
+          </td>
+
+          <td class="type_of_animal">
+            <%= animal.type_of_animal %>
+          </td>
+
+          <td class="list_description">
+            <%= animal.description %>
+          </td>
+
+          <td class="list_actions">
+            <%= link_to 'Show', animal %><br />
+            <%= link_to 'Edit', edit_animal_path(animal) %><br />
+            <%= link_to 'Remove', animal, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
 <%= link_to 'New Animal', new_animal_path %>
