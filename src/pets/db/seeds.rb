@@ -40,3 +40,13 @@ Animal.create(:name => 'Ralph',
         Old but reliable. Loves carrots, peanut butter and exploring.
       </p>
       })
+
+Animal.create(:name => 'Geico',
+  :age => 2,
+  :type_of_animal => 'Gecko',
+  :description =>
+    %{
+      <p>
+        Calm, collected, scaly and loyal. Best friend you ever had.
+      </p>
+      })
