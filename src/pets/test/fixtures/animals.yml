@@ -11,3 +11,27 @@ two:
   age: 9.99
   type_of_animal: MyString
   description: MyText
+
+three:
+  name: 'Sparky'
+  age: 2
+  type_of_animal: 'Dalmation'
+  description: 'Sparky little puppy you were looking for. Loves to frolic in the grass and chew on his favorite toys. Keep your shoes out of his reach.'
+
+four:
+  name: 'Diego'
+  age: 4
+  type_of_animal: 'Cat'
+  description: 'Snugly little kitty cat that will not let you sleep until he gets to play. Loves strings and pens on the table and staying warm by your side at night.'
+
+five:
+  name: 'Ralph'
+  age: 30
+  type_of_animal: 'Horse'
+  description: 'Old but reliable. Loves carrots, peanut butter and exploring.'
+
+six:
+  name: 'Geico'
+  age: 2
+  type_of_animal: 'Gecko'
+  description: 'Calm, collected, scaly and loyal. Best friend you ever had.'

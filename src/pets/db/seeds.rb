@@ -12,11 +12,9 @@ Animal.create(:name => 'Sparky',
   :type_of_animal => 'Dalmation',
   :description =>
     %{
-      <p>
         Sparky little puppy you've been looking for.
         Loves to frolic in the grass and chew on his favorite toys.
         Keep your shoes out of his reach.
-      </p>
       })
 
 Animal.create(:name => 'Diego',
@@ -24,11 +22,9 @@ Animal.create(:name => 'Diego',
   :type_of_animal => 'Cat',
   :description =>
     %{
-      <p>
-        Snugly little kitty cat that won't let you sleep until he gets to play.
+        Snugly little kitty cat that will not let you sleep until he gets to play.
         Loves strings and pens on the table and staying warm by your
         side at night.
-      </p>
       })
 
 Animal.create(:name => 'Ralph',
@@ -36,9 +32,7 @@ Animal.create(:name => 'Ralph',
   :type_of_animal => 'Horse',
   :description =>
     %{
-      <p>
         Old but reliable. Loves carrots, peanut butter and exploring.
-      </p>
       })
 
 Animal.create(:name => 'Geico',
@@ -46,7 +40,5 @@ Animal.create(:name => 'Geico',
   :type_of_animal => 'Gecko',
   :description =>
     %{
-      <p>
         Calm, collected, scaly and loyal. Best friend you ever had.
-      </p>
       })
