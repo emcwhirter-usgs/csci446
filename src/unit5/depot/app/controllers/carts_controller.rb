@@ -1,9 +1,9 @@
 #---
 # Excerpted from "Agile Web Development with Rails",
 # published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
+# Copyrights apply to this code. It may not be used to create training material,
 # courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
+# We make no guarantees that this code is fit for any purpose.
 # Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
 #---
 class CartsController < ApplicationController
@@ -18,6 +18,17 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    begin
+      @cart = Cart.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      logger.error "Attempt to access invalid cart" #{params[:id]}
+      redirect_to store_url, :notice => 'invalid cart'
+    else
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml { render :xml => @cart }
+      end
+    end
   end
 
   # GET /carts/new
